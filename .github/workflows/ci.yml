@@ -25,6 +25,9 @@ jobs:
 
       - run: pnpm format:check
 
+      # Types and tests resolve the packages through their built dist/ output.
+      - run: pnpm build
+
       - run: pnpm typecheck
 
       - run: pnpm test
