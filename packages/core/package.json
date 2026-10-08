@@ -19,7 +19,9 @@
   "license": "MIT",
   "author": "Venture Studio",
   "type": "module",
-  "sideEffects": ["./dist/browser.js"],
+  "sideEffects": [
+    "./dist/browser.js"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",

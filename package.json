@@ -22,7 +22,15 @@
     "build:example": "pnpm --filter example-next build",
     "typecheck": "pnpm -r typecheck",
     "test": "pnpm -r --filter \"./packages/*\" test",
+    "lint": "biome lint .",
+    "format": "biome format --write .",
+    "format:check": "biome format .",
     "check:packages": "pnpm -r --filter \"./packages/*\" check:package",
-    "check:leak": "pnpm --filter client-leak check"
+    "check:leak": "pnpm --filter client-leak check",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "catalog:",
+    "husky": "catalog:"
   }
 }

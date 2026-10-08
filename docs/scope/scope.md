@@ -9,19 +9,19 @@ _These are recommendations to keep your build orderly, not requirements. Skip an
 
 ## At a glance
 
-| # | Feature | Phase | Status |
-|---|---------|-------|--------|
-| 1 | Stack & architecture | Foundation | in-progress |
-| 2 | Coding standards & tooling | Foundation | planned |
-| 3 | API contract & error model | Foundation | planned |
-| 4 | Direct JWE encryption | Foundation | planned |
-| 5 | Create bill & redirect | Slice 1 | planned |
-| 6 | Webhook handling | Slice 2 | planned |
-| 7 | Bill status & return page | Slice 3 | planned |
-| 8 | Refunds | Slice 4 | planned |
-| 9 | Transactions & reconciliation | Slice 5 | planned |
-| 10 | README & examples | Release | planned |
-| 11 | Release automation | Release | planned |
+| #   | Feature                       | Phase      | Status      |
+| --- | ----------------------------- | ---------- | ----------- |
+| 1   | Stack & architecture          | Foundation | in-progress |
+| 2   | Coding standards & tooling    | Foundation | in-progress |
+| 3   | API contract & error model    | Foundation | planned     |
+| 4   | Direct JWE encryption         | Foundation | planned     |
+| 5   | Create bill & redirect        | Slice 1    | planned     |
+| 6   | Webhook handling              | Slice 2    | planned     |
+| 7   | Bill status & return page     | Slice 3    | planned     |
+| 8   | Refunds                       | Slice 4    | planned     |
+| 9   | Transactions & reconciliation | Slice 5    | planned     |
+| 10  | README & examples             | Release    | planned     |
+| 11  | Release automation            | Release    | planned     |
 
 ## Foundations
 
@@ -35,7 +35,12 @@ spec [0001](../specs/0001-stack-architecture/index.md) · code in `packages/`, `
 ### 2. Coding standards & tooling · Alpha
 Capture conventions from the real scaffold, then install lint, format, strict types, pre commit hooks, and CI that runs lint, type check, tests, and bundle size on every PR.
 **Done when:** root `AGENTS.md` reflects the real stack, and lint, format, type check, and CI run clean on an empty PR.
-- [ ] Capture conventions + tooling choices: `/audit`
+code in `biome.json`, `.husky/`, `.github/workflows/ci.yml`
+- [x] Capture conventions + tooling choices: `/audit`
+- [ ] Build it: `/develop coding standards & tooling`
+  - [x] Biome lint and format, plus a rule that keeps value imports from core out of `packages/react`
+  - [x] Pre commit hook (husky) that runs lint, format check, and typecheck before each commit
+  - [ ] CI workflow on push that runs lint, format check, typecheck, and test (written; the first GitHub run waits for a push)
 
 ### 3. API contract & error model · needs a decision
 The typed shapes every feature builds on: request and response types for all four endpoints and the webhook, enums for bill status, currency, and transaction type, and one error model that separates HTTP transport failures from ShamCash `result` codes (1000 to 1708, 2500 success).
@@ -108,13 +113,13 @@ Out of scope for the current build pass, kept so the plan stays honest.
 
 **Feature lifecycle**: the scope updates as a feature moves; each row is what it shows and who sets it:
 
-| State | Set by | The feature shows |
-|---|---|---|
-| `planned` · needs a decision | `/scope` | one box: `Design it (spec): /architect <feature>` |
-| `in-progress` (designed) | **`/architect` at spec capture** | `Design it` ticked; spec linked; `Build it: /develop <feature>` + **2 to 5 milestones**; the tier's closing boxes (`Verify it` Alpha+, `Test it` Beta+, `Review it` + `Document it` GA); any surfaced follow up enrolled |
-| `in-progress` (building) | `/develop` | milestone sub boxes tick one by one; code pointer filled |
-| `in-progress` (verified) | `/check verify` | `Build it` + milestones ticked; `Verify it` ticked |
-| `done` | **you, when you decide it is** (any skill sets it when you say so); `/sync` reconciles | boxes you ran ticked, skipped ones marked skipped; the tier's last stage (`Prototype` → after `/develop`; `Alpha` → after `/check verify`; `Beta`/`GA` → after `/test`) is the suggested point to call it done; `/sync` captures conventions |
+| State                        | Set by                                                                                 | The feature shows                                                                                                                                                                                                                            |
+| ---------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `planned` · needs a decision | `/scope`                                                                               | one box: `Design it (spec): /architect <feature>`                                                                                                                                                                                            |
+| `in-progress` (designed)     | **`/architect` at spec capture**                                                       | `Design it` ticked; spec linked; `Build it: /develop <feature>` + **2 to 5 milestones**; the tier's closing boxes (`Verify it` Alpha+, `Test it` Beta+, `Review it` + `Document it` GA); any surfaced follow up enrolled                     |
+| `in-progress` (building)     | `/develop`                                                                             | milestone sub boxes tick one by one; code pointer filled                                                                                                                                                                                     |
+| `in-progress` (verified)     | `/check verify`                                                                        | `Build it` + milestones ticked; `Verify it` ticked                                                                                                                                                                                           |
+| `done`                       | **you, when you decide it is** (any skill sets it when you say so); `/sync` reconciles | boxes you ran ticked, skipped ones marked skipped; the tier's last stage (`Prototype` → after `/develop`; `Alpha` → after `/check verify`; `Beta`/`GA` → after `/test`) is the suggested point to call it done; `/sync` captures conventions |
 
 - **Next step** = the first unticked box (always a command or a tracked milestone).
 - **needs a decision** = run `/architect` first; otherwise straight to `/develop` (or `/audit` for standards & tooling). The tag drops once the spec is captured.

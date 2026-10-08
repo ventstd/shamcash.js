@@ -34,7 +34,9 @@ for await (const file of glob('.next/static/**/*.js', { cwd: root })) {
   if (source.includes(STUB_TEXT)) stubChunks++
 }
 if (stubChunks === 0) fail('no client chunk contains the browser stub error')
-console.log(`✓ core in a client component: ${stubChunks} client chunk(s) hold the stub, none hold the real entry`)
+console.log(
+  `✓ core in a client component: ${stubChunks} client chunk(s) hold the stub, none hold the real entry`,
+)
 
 // Copies a misuse template into `app/` as a page, expects `next build` to
 // fail with `reason` in its output, then removes the page again.
@@ -45,7 +47,8 @@ async function expectBuildFails(template: string, reason: string, label: string)
   try {
     const build = nextBuild()
     if (build.status === 0) fail(`next build passed with ${label}`)
-    if (!build.output.includes(reason)) fail(`next build failed, but not with "${reason}"`, build.output)
+    if (!build.output.includes(reason))
+      fail(`next build failed, but not with "${reason}"`, build.output)
     console.log(`✓ ${label}: next build fails`)
   } finally {
     await rm(pageDir, { recursive: true, force: true })
@@ -53,7 +56,11 @@ async function expectBuildFails(template: string, reason: string, label: string)
 }
 
 // Check 2: named core import from a client component.
-await expectBuildFails('core-named-leak', 'dist/browser.js', 'a named core import in a client component')
+await expectBuildFails(
+  'core-named-leak',
+  'dist/browser.js',
+  'a named core import in a client component',
+)
 
 // Check 3: next helpers imported from a client component.
 await expectBuildFails('next-leak', 'server-only', '@ventstd/shamcash-next in a client component')
