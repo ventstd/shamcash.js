@@ -5,7 +5,7 @@ _Steps derived from spec 0001 `### What the scaffold must prove` (the spec has n
 - [x] `pnpm --filter client-leak build && pnpm --filter client-leak exec next start`, open `http://localhost:3000` in a browser → the console shows `@ventstd/shamcash is server only. Import it in route handlers or server code, never in client components.` → "loading the page throws that error"
 
 ## Commands
-- [ ] `pnpm install` from a clean clone → installs with pnpm 12.10.1 (from `packageManager`), no ignored build script error → workspace runs
+- [x] `pnpm install` from a clean clone → installs with pnpm 12.10.1 (from `packageManager`), no ignored build script error → workspace runs
 - [x] `pnpm build` → all three packages build to `dist/` (core has `index.js` and `browser.js`) → "`pnpm -r build` passes"
 - [x] `pnpm typecheck` → all five workspaces pass, including both Next apps → "`pnpm -r typecheck` passes"
 - [x] `pnpm check:packages` → `publint --strict` and `attw --profile esm-only` pass on all three packages → "publint and attw pass"
