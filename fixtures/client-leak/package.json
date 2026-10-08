@@ -1,0 +1,24 @@
+{
+  "name": "client-leak",
+  "private": true,
+  "type": "module",
+  "description": "Misuses the server packages from client components on purpose, to prove the guards fail loudly.",
+  "scripts": {
+    "build": "next build",
+    "typecheck": "next typegen && tsc --noEmit",
+    "check": "node scripts/check.ts"
+  },
+  "dependencies": {
+    "@ventstd/shamcash": "workspace:*",
+    "@ventstd/shamcash-next": "workspace:*",
+    "next": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "typescript": "catalog:"
+  }
+}

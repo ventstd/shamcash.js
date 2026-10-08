@@ -1,0 +1,58 @@
+{
+  "name": "@ventstd/shamcash",
+  "version": "0.0.0",
+  "description": "Server core for the ShamCash e-payment API: holds your secret key and makes typed calls. Server only.",
+  "keywords": [
+    "shamcash",
+    "payments",
+    "server"
+  ],
+  "homepage": "https://github.com/ventstd/shamcash.js#readme",
+  "bugs": {
+    "url": "https://github.com/ventstd/shamcash.js/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ventstd/shamcash.js.git",
+    "directory": "packages/core"
+  },
+  "license": "MIT",
+  "author": "Venture Studio",
+  "type": "module",
+  "sideEffects": ["./dist/browser.js"],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "workerd": "./dist/index.js",
+      "worker": "./dist/index.js",
+      "edge-light": "./dist/index.js",
+      "deno": "./dist/index.js",
+      "bun": "./dist/index.js",
+      "node": "./dist/index.js",
+      "browser": "./dist/browser.js",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p test",
+    "test": "vitest run",
+    "check:package": "publint --strict && attw --pack . --profile esm-only"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "catalog:",
+    "@cloudflare/vitest-pool-workers": "catalog:",
+    "@types/node": "catalog:",
+    "publint": "catalog:",
+    "tsdown": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  }
+}

@@ -1,12 +1,7 @@
 {
   "name": "shamcash.js",
-  "version": "1.0.0",
-  "description": "A client-side npm package for the shamcash e-payment API",
-  "keywords": [
-    "shamcash",
-    "npm",
-    "client-side"
-  ],
+  "private": true,
+  "description": "Workspace root for the shamcash.js packages (a community JavaScript library for the ShamCash e-payment API)",
   "homepage": "https://github.com/ventstd/shamcash.js#readme",
   "bugs": {
     "url": "https://github.com/ventstd/shamcash.js/issues"
@@ -17,9 +12,17 @@
   },
   "license": "MIT",
   "author": "Venture Studio",
-  "type": "commonjs",
-  "main": "index.js",
+  "type": "module",
+  "packageManager": "pnpm@12.10.1",
+  "engines": {
+    "node": ">=22.12"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "pnpm -r --filter \"./packages/*\" build",
+    "build:example": "pnpm --filter example-next build",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r --filter \"./packages/*\" test",
+    "check:packages": "pnpm -r --filter \"./packages/*\" check:package",
+    "check:leak": "pnpm --filter client-leak check"
   }
 }

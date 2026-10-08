@@ -1,0 +1,59 @@
+{
+  "name": "@ventstd/shamcash-next",
+  "version": "0.0.0",
+  "description": "Next.js route handler helpers for ShamCash bills and webhooks. Server only.",
+  "keywords": [
+    "shamcash",
+    "payments",
+    "nextjs",
+    "server"
+  ],
+  "homepage": "https://github.com/ventstd/shamcash.js#readme",
+  "bugs": {
+    "url": "https://github.com/ventstd/shamcash.js/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ventstd/shamcash.js.git",
+    "directory": "packages/next"
+  },
+  "license": "MIT",
+  "author": "Venture Studio",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p test",
+    "test": "vitest run",
+    "check:package": "publint --strict && attw --pack . --profile esm-only"
+  },
+  "dependencies": {
+    "server-only": "catalog:"
+  },
+  "peerDependencies": {
+    "@ventstd/shamcash": "workspace:^",
+    "next": "^15 || ^16",
+    "react": "^19"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "catalog:",
+    "@types/node": "catalog:",
+    "@ventstd/shamcash": "workspace:*",
+    "next": "catalog:",
+    "publint": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "tsdown": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  }
+}

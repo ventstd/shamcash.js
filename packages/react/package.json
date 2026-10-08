@@ -1,0 +1,56 @@
+{
+  "name": "@ventstd/shamcash-react",
+  "version": "0.0.0",
+  "description": "Headless React hooks for ShamCash checkout. Talks to your own server routes; never sees your secret key.",
+  "keywords": [
+    "shamcash",
+    "payments",
+    "react",
+    "hooks"
+  ],
+  "homepage": "https://github.com/ventstd/shamcash.js#readme",
+  "bugs": {
+    "url": "https://github.com/ventstd/shamcash.js/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ventstd/shamcash.js.git",
+    "directory": "packages/react"
+  },
+  "license": "MIT",
+  "author": "Venture Studio",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p test",
+    "test": "vitest run",
+    "check:package": "publint --strict && attw --pack . --profile esm-only"
+  },
+  "peerDependencies": {
+    "@ventstd/shamcash": "workspace:^",
+    "react": "^19"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "catalog:",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@ventstd/shamcash": "workspace:*",
+    "jsdom": "catalog:",
+    "publint": "catalog:",
+    "react": "catalog:",
+    "tsdown": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  }
+}

@@ -11,7 +11,7 @@ _These are recommendations to keep your build orderly, not requirements. Skip an
 
 | # | Feature | Phase | Status |
 |---|---------|-------|--------|
-| 1 | Stack & architecture | Foundation | planned |
+| 1 | Stack & architecture | Foundation | in-progress |
 | 2 | Coding standards & tooling | Foundation | planned |
 | 3 | API contract & error model | Foundation | planned |
 | 4 | Direct JWE encryption | Foundation | planned |
@@ -25,10 +25,12 @@ _These are recommendations to keep your build orderly, not requirements. Skip an
 
 ## Foundations
 
-### 1. Stack & architecture · needs a decision
+### 1. Stack & architecture
 Decide the package layout (server core, React layer, Next.js helpers), build output, and how server only code is kept out of browser bundles, then scaffold a runnable workspace.
 **Done when:** the decision is in a spec, the empty packages build and type check, and importing the server core from a client component fails loudly instead of leaking the key.
-- [ ] Decide the stack (spec): `/architect stack & architecture`
+spec [0001](../specs/0001-stack-architecture/index.md) · code in `packages/`, `examples/next/`, `fixtures/client-leak/`
+- [x] Decide the stack (spec): `/architect stack & architecture`
+- [x] Scaffold from the decision: `/develop stack & architecture`
 
 ### 2. Coding standards & tooling · Alpha
 Capture conventions from the real scaffold, then install lint, format, strict types, pre commit hooks, and CI that runs lint, type check, tests, and bundle size on every PR.
